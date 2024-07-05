@@ -41,3 +41,16 @@ make(int)    // Illegal
 Yes, merging new and make into a single built-in function is possible. However, it is probable that a single built-in function would lead to more confusion among new Go programmers than having two built-in functions.
 
 Considering all of the above points, it appears more appropriate for new and make to remain separate.
+
+> new(T) - Allocates memory, and sets it to the zero value for type T..
+..that is 0 for int, "" for string and nil for referenced types (slice, map, chan)
+
+- Note that referenced types are just pointers to some underlying data structures, which won't be created by new(T)
+Example: in case of slice, the underlying array won't be created, thus new([]int) returns a pointer to nothing
+
+
+- make(T) - Allocates memory for referenced data types (slice, map, chan), plus initializes their underlying data structures
+
+### Example:
+In case of slice, the underlying array will be created with the specified length and capacity
+Bear in mind that, unlike C, an array is a primitive type in Go!
