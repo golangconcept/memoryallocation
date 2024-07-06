@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	// fmt.Printf("Hello, Jai Pal\n")
 	fmt.Println("------- Make -------")
 
 	a := make([]int, 0)

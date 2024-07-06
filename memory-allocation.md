@@ -102,3 +102,5 @@ pointer == nil : true
 pointer value: 0x0
 
 ```
+
+> Note: <span style="color: red;">Problem with new() arises when it needs to handle three other composite types - chan, slice and map</span>. 
