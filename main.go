@@ -1,8 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	_ "net/http/pprof"
+)
 
-func main() {
+func main1() {
 	fmt.Println("------- Make -------")
 
 	a := make([]int, 0)
