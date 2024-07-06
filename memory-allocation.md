@@ -54,3 +54,51 @@ Example: in case of slice, the underlying array won't be created, thus new([]int
 ### Example:
 In case of slice, the underlying array will be created with the specified length and capacity
 Bear in mind that, unlike C, an array is a primitive type in Go!
+
+That being said:
+- make(T) behaves like composite-literal syntax
+- new(T) behaves like var (when the variable is not initialized)
+```go 
+func main() {
+    fmt.Println("-- MAKE --")
+    a := make([]int, 0)
+    aPtr := &a
+    fmt.Println("pointer == nil :", *aPtr == nil)
+    fmt.Printf("pointer value: %p\n\n", *aPtr)
+
+    fmt.Println("-- COMPOSITE LITERAL --")
+    b := []int{}
+    bPtr := &b
+    fmt.Println("pointer == nil :", *bPtr == nil)
+    fmt.Printf("pointer value: %p\n\n", *bPtr)
+
+    fmt.Println("-- NEW --")
+    cPtr := new([]int)
+    fmt.Println("pointer == nil :", *cPtr == nil)
+    fmt.Printf("pointer value: %p\n\n", *cPtr)
+
+    fmt.Println("-- VAR (not initialized) --")
+    var d []int
+    dPtr := &d
+    fmt.Println("pointer == nil :", *dPtr == nil)
+    fmt.Printf("pointer value: %p\n", *dPtr)
+}
+Run the program
+
+-- MAKE --
+pointer == nil : false
+pointer value: 0x118eff0  # address to underlying array
+
+-- COMPOSITE LITERAL --
+pointer == nil : false
+pointer value: 0x118eff0  # address to underlying array
+
+-- NEW --
+pointer == nil : true
+pointer value: 0x0
+
+-- VAR (not initialized) --
+pointer == nil : true
+pointer value: 0x0
+
+```
