@@ -49,7 +49,7 @@ Considering all of the above points, it appears more appropriate for new and mak
 Example: in case of slice, the underlying array won't be created, thus new([]int) returns a pointer to nothing
 
 
-- make(T) - Allocates memory for referenced data types (slice, map, chan), plus initializes their underlying data structures
+- make(T) - Allocates memory for referenced data types (**slice**, **map**, **chan**), plus initializes their underlying data structures
 
 ### Example:
 In case of slice, the underlying array will be created with the specified length and capacity
